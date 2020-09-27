@@ -397,16 +397,16 @@ public class InventariosFrame extends javax.swing.JInternalFrame {
            String clave = producto.getIdProducto();
            String nombre = producto.getNombreProducto();
            String unidad = producto.getUnidadProducto();
-           double precioCompra = producto.getPrecioCompraProducto();
-           double precioVenta = producto.getPrecioVentaProducto();
-           double existencia = producto.getExistenciasProducto();
+           Double precioCompra = producto.getPrecioCompraProducto();
+           Double precioVenta = producto.getPrecioVentaProducto();
+           Double stock = producto.getStockProducto();
            
            modeloTabla.setValueAt(clave, i, 0);
            modeloTabla.setValueAt(producto, i, 1);
            modeloTabla.setValueAt(unidad, i, 2);
            modeloTabla.setValueAt(precioCompra, i, 3);
            modeloTabla.setValueAt(precioVenta, i, 4);
-           modeloTabla.setValueAt(existencia, i, 5);
+           modeloTabla.setValueAt(stock, i, 5);
 
        }
        

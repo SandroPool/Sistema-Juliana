@@ -202,70 +202,7 @@ public class BaseDatos {
         }
         return streamFoto;
     }
-    
-    public ArrayList<Venta> cantidadVentas(){
-        ArrayList<Venta> listaVentas = new ArrayList<Venta>();
-        try {
-            
-            connexion = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/db_sistema", "postgres", "password");
-            String sql = "SELECT COUNT(monto_venta) as cantidad_venta FROM ventas ";
-            ps = connexion.prepareStatement(sql);
-            
-            rs = ps.executeQuery();
-            
-            while(rs.next()){
-                double cantidadVenta = rs.getDouble("cantidad_venta");
-                
-                Venta venta = new Venta(cantidadVenta);
-                listaVentas.add(venta);
-            }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally{
-            try {
-                connexion.close();;
-                ps.close();
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        
-        return listaVentas;
-    }
-    
-    public ArrayList<Venta> montoTotalVenta(){
-        ArrayList<Venta> listaMontoTotal = new ArrayList<Venta>();
-        
-        try {
-            connexion = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/db_sistema", "postgres", "password");
-            String sql = "select SUM(v.monto_venta) as TotalVendido from ventas v";
-            ps = connexion.prepareStatement(sql);
-            
-            rs = ps.executeQuery();
-            
-            while (rs.next()) {                
-                double montoTotalVenta = rs.getDouble("TotalVendido");
-                
-                Venta venta = new Venta(montoTotalVenta);
-                listaMontoTotal.add(venta);
-            }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally{
-            try {
-                connexion.close();
-                ps.close();
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return listaMontoTotal;
-    }
-    
+
     public void insertCategoria(Categoria categoria){
         try {
             connexion = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/db_sistema", "postgres", "password");

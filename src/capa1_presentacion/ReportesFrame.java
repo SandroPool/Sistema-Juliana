@@ -6,7 +6,7 @@
 package capa1_presentacion;
 
 import capa2_dominio.Venta;
-import capa3_persistencia.BaseDatos;
+import capa3_persistencia.BaseConsulta;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author SANDRO
  */
 public class ReportesFrame extends javax.swing.JInternalFrame {
-    BaseDatos baseDatos = new BaseDatos();
+    BaseConsulta baseConsulta = new BaseConsulta();
     /**
      * Creates new form ReportesFrame
      */
@@ -26,7 +26,7 @@ public class ReportesFrame extends javax.swing.JInternalFrame {
     
     public void mostrarCantidadVentas(){
         ArrayList<Venta> listaCantidadVenta = new ArrayList<Venta>();
-        listaCantidadVenta=baseDatos.cantidadVentas();
+        listaCantidadVenta=baseConsulta.cantidadVentas();
         
         listaCantidadVenta.forEach(venta ->{
             String cantidadVenta = String.valueOf(Math.round(venta.getMontoVenta()));
@@ -35,7 +35,7 @@ public class ReportesFrame extends javax.swing.JInternalFrame {
     }
     public void mostrarMontoTotalVentas(){
         ArrayList<Venta> listaMontoTotalVentas = new ArrayList<Venta>();
-        listaMontoTotalVentas = baseDatos.montoTotalVenta();
+        listaMontoTotalVentas = baseConsulta.montoTotalVenta();
         
         listaMontoTotalVentas.forEach(montoVenta->{
             String montoTotalVenta = String.valueOf("S/."+montoVenta.getMontoVenta());
